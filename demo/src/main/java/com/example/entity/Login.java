@@ -1,9 +1,11 @@
 package com.example.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
 public class Login {
@@ -11,22 +13,39 @@ public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	@Column(unique = true)
 	private String username;
 	private int password;
+//	@Column(unique = true)
 	private String emailid;
-	private int moNo;
-	public Login(int id, String username, int password, String emailid, int moNo) {
+	private Long moNo;
+	private String role;
+	
+	
+	
+	
+	
+	public Login() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Login(int id, String username, int password, String emailid, Long moNo, String role) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.emailid = emailid;
 		this.moNo = moNo;
+		this.role = role;
 	}
-	public Login() {
-		super();
-		// TODO Auto-generated constructor stub
+	public String getRole() {
+		return role;
 	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -51,10 +70,10 @@ public class Login {
 	public void setEmailid(String emailid) {
 		this.emailid = emailid;
 	}
-	public int getMoNo() {
+	public Long getMoNo() {
 		return moNo;
 	}
-	public void setMoNo(int moNo) {
+	public void setMoNo(Long moNo) {
 		this.moNo = moNo;
 	}
 	

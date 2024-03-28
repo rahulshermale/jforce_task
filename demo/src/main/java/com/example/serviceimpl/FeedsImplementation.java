@@ -30,6 +30,7 @@ public class FeedsImplementation implements FeedsService{
 	@Override
 	public Feeds updatePost(Feeds feed, int id) {
 		// TODO Auto-generated method stub
+//		return feedpost.save(feed,id);
 		return null;
 	}
 
@@ -51,5 +52,11 @@ public class FeedsImplementation implements FeedsService{
 		
 		return feedpost.findAll();
 	}
+	
+	
+
+    public void deleteUserByUsername(int id) {
+    	feedpost.deleteByUsername(id);
+    }
 
 }

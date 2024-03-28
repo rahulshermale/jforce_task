@@ -21,6 +21,20 @@ public class registerImpl implements registerService {
 		return regirepo.findAll();
 	}
 
+	public Optional<Login> getuserById(int id) {
+		// TODO Auto-generated method stub
+		return regirepo.findById(id);
+	}
+	
+	@Override
+	public List<Login> getUserByName(String name) {
+		// TODO Auto-generated method stub
+		return regirepo.listtype(name);
+//		return null;
+		
+	}
+
+	
 	@Override
 	public void AddUser(Login login) {
 		// TODO Auto-generated method stub
@@ -29,14 +43,51 @@ public class registerImpl implements registerService {
 	}
 
 	@Override
-	public Login deletUserByid(int id) {
+	public void deleteById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		 regirepo.deleteById(id);
+		
 	}
 	@Override
 	public Optional<Login> userlogin(String name) {
 		// TODO Auto-generated method stub
 		return regirepo.findByUsername(name);
 	}
+
+	@Override
+	public Login update(int id, Login login) {
+		// TODO Auto-generated method stub
+		
+		return regirepo.save(login);
+		
+	}
+
+	
+
+	public Login updateUser(int id, Login user) {
+        if (regirepo.existsById(id)) {
+            user.setId(id);
+            return regirepo.save(user);
+        }
+        return null;
+    }
+
+	public List<Login> getSelected(String username) {
+		// TODO Auto-generated method stub
+		
+		regirepo.findByUsername(username);
+		
+		return null;
+	}
+
+	@Override
+	public Login getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+
+	
 
 }

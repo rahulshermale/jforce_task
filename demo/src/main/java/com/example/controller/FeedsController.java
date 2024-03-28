@@ -26,6 +26,7 @@ public class FeedsController {
 		return feedimpl.getAllPost();
 	}
 
+	
 	@GetMapping(value = "/api/get")
 	public List<Feeds> findAllUsersWithAddress() {
 		// TODO Auto-generated method stub
@@ -34,13 +35,17 @@ public class FeedsController {
 
 	@PostMapping("api/addpost")
 	public void addPost(@RequestBody Feeds feed) {
+		
 		// TODO Auto-generated method stub
 		feedimpl.addPost(feed);
 	}
+	
 
-	@DeleteMapping("api/delete/{id}")
+	@DeleteMapping("api/deletebyid/{id}")
 	public void deletbyId(@PathVariable int id) {
 		// TODO Auto-generated method stub
+		
+		System.err.println(id);
 		feedimpl.deletById(id);
 	}
 	
@@ -48,8 +53,15 @@ public class FeedsController {
 	public void deletAllPost() {
 		// TODO Auto-generated method stub
 		feedimpl.deletAllPost();
+		
+		
+		
 	}
 	
-	
+	@DeleteMapping("/api/delete/{id}")
+    public String deleteUserByUsername(@PathVariable int id) {
+		feedimpl.deleteUserByUsername(id);
+        return "User with username " + id + " has been deleted successfully.";
+    }
 	
 }

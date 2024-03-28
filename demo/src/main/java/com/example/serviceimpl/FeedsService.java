@@ -6,7 +6,7 @@ import com.example.entity.Feeds;
 
 public interface FeedsService {
 
-public void addPost(Feeds feed);
+  public void addPost(Feeds feed);
 	
 	public List<Feeds> getAllPost();
 	
